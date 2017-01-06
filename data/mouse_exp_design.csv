@@ -1,4 +1,4 @@
-genotype,celltype,replicate,samplemeans
+samplename,genotype,celltype,replicate,samplemeans
 sample1,Wt,typeA,1,10.2661021012543
 sample2,Wt,typeA,2,10.849759056832
 sample3,Wt,typeA,3,9.45251675773249
