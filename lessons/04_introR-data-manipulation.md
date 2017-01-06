@@ -36,7 +36,7 @@ When working with genomic data, we often have a metadata file containing informa
 The `read.csv` function has *one required argument* and several *options* that can be specified. The mandatory argument is a path to the file and filename, which in our case is `data/mouse_exp_design.csv`. We will put the function to the right of the assignment operator, meaning that **any output will be saved as the variable name provided on the left**.
 
 ```r
-metadata <- read.csv(file="data/mouse_exp_design.csv")
+metadata <- read.csv(file="data/mouse_exp_design.csv", row.names = 1)
 ```
 
 > *Note: By default, `read.csv` converts (= coerces) columns that contain characters (i.e., text) into the `factor` data type. Depending on what you want to do with the data, you may want to keep these columns as `character`. To do so, `read.csv()` and `read.table()` have an argument called `stringsAsFactors` which can be set to `FALSE`.*
@@ -53,19 +53,19 @@ Take a look at the dataframe by typing out the variable name `metadata` and pres
 ```r
 metadata
 
-          genotype celltype replicate
-sample1        Wt    typeA		1
-sample2        Wt    typeA		2
-sample3        Wt    typeA		3
-sample4        KO    typeA		1
-sample5        KO    typeA		2
-sample6        KO    typeA		3
-sample7        Wt    typeB		1
-sample8        Wt    typeB		2
-sample9        Wt    typeB		3
-sample10       KO    typeB		1
-sample11       KO    typeB		2
-sample12       KO    typeB		3
+         genotype celltype replicate samplemeans
+sample1        Wt    typeA         1   10.266102
+sample2        Wt    typeA         2   10.849759
+sample3        Wt    typeA         3    9.452517
+sample4        KO    typeA         1   15.833872
+sample5        KO    typeA         2   15.590184
+sample6        KO    typeA         3   15.551529
+sample7        Wt    typeB         1   15.522219
+sample8        Wt    typeB         2   13.808281
+sample9        Wt    typeB         3   14.108399
+sample10       KO    typeB         1   10.743292
+sample11       KO    typeB         2   10.778318
+sample12       KO    typeB         3    9.754733
 
 ```
 
@@ -85,9 +85,10 @@ str(metadata)
  $ genotype : Factor w/ 2 levels "KO","Wt": 2 2 2 1 1 1 2 2 2 1 ...
  $ celltype : Factor w/ 2 levels "typeA","typeB": 1 1 1 1 1 1 2 2 2 2 ...
  $ replicate: num  1 2 3 1 2 3 1 2 3 1 ...
+ $ samplemeans: num  10.27 10.85 9.45 15.83 15.59 ...
 ```
 
-As you can see, the columns `genotype` and `celltype` are of the `factor` class, whereas the replicate column has been interpreted as integer data type.
+As you can see, the columns `genotype` and `celltype` are of the `factor` class, whereas the replicate and samplemeans columns have been interpreted as numeric data type.
 
 __You can also get this information from the "Environment" tab in RStudio.__
 
