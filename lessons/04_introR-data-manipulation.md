@@ -8,7 +8,7 @@ Approximate time: 60 min
 ## Learning Objectives
 * Reading data into R
 * Inspecting data structures
-* Using indexes and sequences to select data from vectors
+* Using indices and sequences to select data from vectors
 
 
 ## Reading data into R
@@ -112,15 +112,15 @@ functions to get a sense of the content/structure of data.
 	- **`rownames()`:** returns the row names in the dataset  
 	- **`colnames()`:** returns the column names in the dataset
 
-## Selecting data using indexes and sequences
+## Selecting data using indices and sequences
 
 When analyzing data, we often want to **partition the data so that we are only working with selected columns or rows.** A data frame or data matrix is simply a collection of vectors combined together. So let's begin with vectors and how to access different elements, and then extend those concepts to dataframes.
 
 ### Vectors
 
-#### Selecting using indexes
+#### Selecting using indices
 
-If we want to extract one or several values from a vector, we must provide one or several indexes using square brackets `[ ]` syntax. The **index represents the element number within a vector** (or the compartment number, if you think of the bucket analogy). R indexes start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that's what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that's simpler for computers to do.
+If we want to extract one or several values from a vector, we must provide one or several indices using square brackets `[ ]` syntax. The **index represents the element number within a vector** (or the compartment number, if you think of the bucket analogy). R indices start at 1. Programming languages like Fortran, MATLAB, and R start counting at 1, because that's what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that's simpler for computers to do.
 
 Let's start by creating a vector called age:
 
@@ -168,9 +168,9 @@ Alternatively, if you wanted the reverse could try `4:1` for instance, and see w
 
 ***
 
-#### Selecting using indexes with logical operators
+#### Selecting using indices with logical operators
 
-We can also use indexes with logical operators. Logical operators include greater than (>), less than (<), and equal to (==). A full list of logical operators in R is displayed below:
+We can also use indices with logical operators. Logical operators include greater than (>), less than (<), and equal to (==). A full list of logical operators in R is displayed below:
 
 | Operator | Description |
 | :-----------:|:----------------|
@@ -215,21 +215,6 @@ age
 age[idx]
 ```
 
-##### Indexing with logical operators using the `which()` function
-
-While logical expressions will return a vector of TRUE and FALSE  values of the same length, we could use the `which()` function to output the indexes where the values are TRUE. Indexing with either method generates the same results, and personal preference determines which method you choose to use. For example:
-
-```r
-idx <- which(age > 50 | age < 18)
-
-idx
-
-age[idx]
-```
-
-Notice that we get the same results regardless of whether or not we use the `which()`. Also note that while `which()` works the same as the logical expressions for indexing, it can be used for multiple other operations, where it is not interchangeable with logical expressions.
-
-
 ### Factors
 
 Since factors are special vectors, the same rules for selecting values using indices apply. The elements of the expression factor created previously had the following categories or levels: low, medium, and high. 
@@ -246,38 +231,6 @@ Then, we use the brackets [ ] to extract the TRUE values from the dataset:
 
 ```r
 expression[idx]
-```
-	
-#### Releveling factors
-
-We have briefly talked about factors, but this data type only becomes more intuitive once you've had a chance to work with it.  Let's take a slight detour and learn about how to **order and relevel categories within a factor**. As we learned earlier, the categories in the `expression` factor were assigned integers alphabetically, with high=1, low=2, medium=3. To view the integer assignments under the hood you can use str:
-
-```r
-str(expression)
-Factor w/ 3 levels "high","low","medium": 2 1 3 1 2 3 1
-```
-
-The unique elements are referred to as "factor levels".
-
-In the example above, the factor has levels but it is unordered, i.e. there is no notation to say that high is greater than medium etc. In fact, the high category is the middle category because of alphabetical order. 
-
-To order factor levels, you can add an argument to the `factor()` function, ordered=TRUE:
-
-```r
-expression <- factor(expression, ordered=TRUE)    ## Note that the `factor()` function is used to create a factor, & to modify the characteristics of an existing factor
-
-str(expression)
-Ord.factor w/ 3 levels "low"<"high"<..: 1 3 2 3 1 2 3
-```
-
-Now the output of the `str()` function states that this is an "Ord.factor", and there are "<" signs to denote that low is the lowest category. 
-
-However, the order of categories is still incorrect, because R is ordering them alphabetically. R does not consider the meaning of the words here, so we have to coerce the proper ordering (i.e. "low" < "medium" < "high") using the `factor()` function once again.
-
-```r
-expression <- factor(expression, levels=c("low", "medium", "high"), ordered=TRUE)    
-	
-str(expression)
 ```
 
 ***

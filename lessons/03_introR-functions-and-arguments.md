@@ -150,8 +150,28 @@ An example is given below for the `ggplot2` package that will be required for so
 ```r
 install.packages('ggplot2')
 ```
+
+### Loading libraries
+Once you have the package installed, you can load it into your R session for use. Any of the functions that are specific to that package will be available for you to use by simply calling the function as you would for any of the base functions. *Note that quotations are not required here.*
+
+
+```r
+library(ggplot2)
+```
+
+You can also check what is loaded in your current environment by using `sessionInfo()` and you you should see your package listed in the "other attached packages":
+
+```r
+other attached packages:
+[1] ggplot2_2.0.0
+```
+
+***
+
+## Self Study
+
 ### Package installation from Bioconductor
-Alternatively, packages can also be installed from [Bioconductor](https://www.bioconductor.org/), another repository of packages which provides tools for the analysis and comprehension of high-throughput **genomic data**. These packages includes (but is not limited to) tools for performing statistical analysis, annotation packages, and accessing public datasets.
+In addition to CRAN, packages can also be installed from [Bioconductor](https://www.bioconductor.org/), another repository of packages which provides tools for the analysis and comprehension of high-throughput **genomic data**. These packages includes (but is not limited to) tools for performing statistical analysis, annotation packages, and accessing public datasets.
 
 <img src="../img/bioconductor_logo.png" width=300>
 
@@ -169,29 +189,6 @@ Once you have the standard packages installed, you can install additional packag
 
 ```r
 biocLite('ggplot2')
-```
-### Package installation from source
-
-Finally, R packages can also be installed from source. This is useful when you do not have an internet connection (and have the source files locally), since the other two methods are retrieving the source files from remote sites. 
-
-To install from source, we use the same `install.packages` function but we have additional arguments that provide *specifications* to *change from defaults*:
-
-```r
-install.packages('ggplot2_1.0.1.tar.gz', type="source", repos=NULL)
-```
-### Loading libraries
-Once you have the package installed, you can load it into your R session for use. Any of the functions that are specific to that package will be available for you to use by simply calling the function as you would for any of the base functions. *Note that quotations are not required here.*
-
-
-```r
-library(ggplot2)
-```
-
-You can also check what is loaded in your current environment by using `sessionInfo()` and you you should see your package listed as:
-
-```r
-other attached packages:
-[1] ggplot2_2.0.0
 ```
 
 ### Finding functions specific to a package
@@ -224,7 +221,7 @@ It is very likley that someone else has encountered this same problem already!
 * Check stackoverflow. Search using the `[r]` tag. Most questions have already been answered, but the challenge is to use the right words in the search to find the answers: [http://stackoverflow.com/questions/tagged/r](http://stackoverflow.com/questions/tagged/r)
 
 
-## Asking for help
+### Asking for help
 
 The key to getting help from someone is for them to grasp your problem rapidly. You
 should make it as easy as possible to pinpoint where the issue might be.
