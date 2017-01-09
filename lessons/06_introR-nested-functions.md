@@ -29,7 +29,7 @@ metadata[metadata$celltype == "typeA",]
 
 This is a rather simple example combining only two lines of code, but you see how the code becomes lengthy and slightly more difficult to read. Even if you decide to avoid writing nested functions for the time being, you should still have experience reading and understanding them. The key to understanding nested functions is to **read from the inside out**.
 
-Let's work through some examples of nested functions!
+Let's work through one example of nested functions!
 
 ### Nested functions practice #1
 
@@ -59,6 +59,9 @@ Rather that assigning the output from each step to a separate variable, we could
 ```r
 length(which(metadata$celltype == "typeA" & metadata$genotype == "Wt"))
 ```
+***
+
+## More examples of nested function for self study
 
 ### Nested functions practice #2
 You realize that you forgot to include important metadata regarding sex of your samples in your `metadata` file. You would like to add this data in and create a new `metadata_new` dataframe. Using functions separately would require us to execute three separate steps:  
