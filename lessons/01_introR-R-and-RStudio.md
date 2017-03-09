@@ -8,7 +8,7 @@ Approximate time: 30 minutes
 
 ## Learning Objectives
 
-* An introduction to R and RStudio
+* A brief introduction to R and RStudio
 * Creating a directory structure for efficient data management
 * Learning how to interact with R
 
